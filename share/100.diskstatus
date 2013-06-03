@@ -1,0 +1,10 @@
+#/bin/sh
+
+# Report on disk status
+
+echo ""
+echo "Disk report:"
+df -hl && ec=0 || ec=3
+echo ""
+
+exit $ec
