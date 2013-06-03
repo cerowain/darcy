@@ -1,0 +1,22 @@
+#!/bin/sh
+
+usage () {
+	echo "usage: darcy <path to report scripts>"
+	exit 1
+}
+
+if [ $# -lt 1 ] ; then
+	usage
+fi
+
+scriptdir=$1
+
+for script in $scriptdir/*
+do
+	if [ -x $script -a ! -d $script ] ; then
+		exec $script
+	fi
+done
+
+
+
