@@ -1,0 +1,23 @@
+#!/bin/sh
+
+LOGDIR="/var/log"
+
+DATESTR=`date --date="yesterday" "+%b %e "`
+
+echo ""
+echo "Failed Auth events:"
+find ${LOGDIR} -name 'auth.log.*' -mtime -2 | 
+	sort -t. -r -n -k 2,2 |
+	while read f
+	do
+		case $f in
+			*.gz)	zcat -f $f;;
+			*bz2)	bzcat -f $f;;
+		esac
+	done
+[ -f ${LOGDIR}/auth.log ] && cat ${LOGDIR}/auth.log | 
+	grep -i "^${DATESTR}.*Invalid user"
+
+echo ""
+
+exit 0
