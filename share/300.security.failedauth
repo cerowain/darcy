@@ -16,7 +16,7 @@ find ${LOGDIR} -name 'auth.log.*' -mtime -2 |
 		esac
 	done
 [ -f ${LOGDIR}/auth.log ] && cat ${LOGDIR}/auth.log | 
-	grep -i "^${DATESTR}.*Invalid user"
+	grep -i "^${DATESTR}.*Invalid user.*from"
 
 echo ""
 
