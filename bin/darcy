@@ -14,7 +14,7 @@ scriptdir=$1
 for script in $scriptdir/*
 do
 	if [ -x $script -a ! -d $script ] ; then
-		exec $script
+		$script
 	fi
 done
 
