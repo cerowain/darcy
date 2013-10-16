@@ -5,7 +5,7 @@ LOGDIR="/var/log"
 DATESTR=`date --date="yesterday" "+%b %e "`
 
 echo ""
-echo "Failed Auth events:"
+echo "Successful Auth events:"
 find ${LOGDIR} -name 'auth.log.*' -mtime -2 | 
 	sort -t. -r -n -k 2,2 |
 	while read f
